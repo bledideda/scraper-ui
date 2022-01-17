@@ -1,0 +1,6 @@
+.input-wrapper{
+    margin-bottom: 2em;
+}
+.input-wrapper .MuiTextField-root{
+    width: 100%;
+}
