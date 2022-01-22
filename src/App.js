@@ -11,11 +11,11 @@ function App() {
 
   const { token, setToken } = useToken();
 
-  if(token) {
+  if (!token) {
     return (
       <AuthLayout>
         <Routes>
-          <Route path="/" element={<LoginPage setToken={setToken}/>} />
+          <Route path="/" element={<LoginPage setToken={setToken} />} />
           <Route path="/login" element={<LoginPage setToken={setToken} />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
@@ -27,7 +27,7 @@ function App() {
   return (
     <DashboardLayout>
       <Routes>
-          <Route path="*"  element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </DashboardLayout>
   );

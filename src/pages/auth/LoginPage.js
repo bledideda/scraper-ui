@@ -6,28 +6,28 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import { loginUser } from "../../service";
 import { navigateTo } from "../../utils";
-import { unstable_HistoryRouter } from "react-router-dom";
+// import { unstable_HistoryRouter } from "react-router-dom";
 
 
 export default function LoginPage({ setToken }) {
-  const history = unstable_HistoryRouter();
+  // const history = unstable_HistoryRouter();
   const [isLaoding, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
 
-	const handleLogin = () => {
-		setIsLoading(true);
-		if(username === "" | password === ""){
-			alert("credentials are required");
-			setIsLoading(false);
-			return;
-		}
-		loginUser({ username, password}).then(res=> {
-			setIsLoading(false);
-			setToken(res.token);
-      navigateTo({path:'/panel', router: history});
-		})
-	}
+  const handleLogin = () => {
+    setIsLoading(true);
+    if (username === "" | password === "") {
+      alert("credentials are required");
+      setIsLoading(false);
+      return;
+    }
+    loginUser({ username, password }).then(res => {
+      console.log(res.data.data.accessToken)
+      setIsLoading(false);
+      setToken(res.data.data.accessToken);
+    })
+  }
 
   return (
     <div style={{ display: "block" }}>
@@ -42,7 +42,7 @@ export default function LoginPage({ setToken }) {
         label="Username"
         variant="outlined"
         onChange={setUsername}
-				value={username}
+        value={username}
       />
 
       <TextInput
@@ -52,13 +52,13 @@ export default function LoginPage({ setToken }) {
         autoComplete="current-password"
         variant="outlined"
         onChange={setPassword}
-				value={password}
+        value={password}
       />
       <div className="text-center">
         {isLaoding ? (
           <LoadingButton
             loading
-						style={{ height: "3.5em", width: "100%" }}
+            style={{ height: "3.5em", width: "100%" }}
             loadingPosition="start"
             startIcon={<SaveIcon />}
             variant="outlined"
@@ -70,7 +70,7 @@ export default function LoginPage({ setToken }) {
             style={{ height: "3.5em", width: "100%" }}
             variant="contained"
             startIcon={<LoginOutlinedIcon />}
-						onClick={handleLogin}
+            onClick={handleLogin}
           >
             Login
           </Button>
