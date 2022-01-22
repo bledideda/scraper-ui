@@ -6,10 +6,11 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import { loginUser } from "../../service";
 import { navigateTo } from "../../utils";
+import { unstable_HistoryRouter } from "react-router-dom";
 
 
 export default function LoginPage({ setToken }) {
-  const history = useHistory();
+  const history = unstable_HistoryRouter();
   const [isLaoding, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
