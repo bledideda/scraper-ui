@@ -23,9 +23,14 @@ export default function LoginPage({ setToken }) {
       return;
     }
     loginUser({ username, password }).then(res => {
-      console.log(res.data.data.accessToken)
       setIsLoading(false);
-      setToken(res.data.data.accessToken);
+      if(res.statusCode === 200){
+        setToken(res.data.data.accessToken);
+      }else{
+        alert('Something went Wrong. Please contact the system Admin and show this code: 100');
+      }
+    }).catch(()=>{
+      alert('Something went Wrong. Please contact the system Admin and show this code: 101');
     })
   }
 
@@ -33,7 +38,6 @@ export default function LoginPage({ setToken }) {
     <div style={{ display: "block" }}>
       <div style={{ textAlign: "center", marginBottom: "5em" }}>
         <Typography variant="h5">Welcome to Ultimate Panel.</Typography>
-
         <Typography variant="body1">Enter credentials to login.</Typography>
       </div>
 
