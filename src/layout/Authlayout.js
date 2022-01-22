@@ -1,7 +1,5 @@
 import './AuthLayout.css';
 
-
-
 export default function AuthLayout({children}){
     return (
         <div className="authPage">
@@ -10,4 +8,4 @@ export default function AuthLayout({children}){
             </div>
         </div>
     )
-} 
+}

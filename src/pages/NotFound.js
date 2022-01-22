@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 
 export default function NotFound(){
     return (
-        <div style={{display:'flex',flexDirection:'column', alignItems:'center', height:'100vh',justifyContent:'center'}}>
+        <div style={{display:'flex',flexDirection:'column', alignItems:'center', height:'100vh',justifyContent:'center',background:"#fff"}}>
             <Typography variant="h2" component="div" gutterBottom>
                 404
             </Typography>

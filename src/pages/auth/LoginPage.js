@@ -5,8 +5,11 @@ import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import { loginUser } from "../../service";
+import { navigateTo } from "../../utils";
+
 
 export default function LoginPage({ setToken }) {
+  const history = useHistory();
   const [isLaoding, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -18,9 +21,10 @@ export default function LoginPage({ setToken }) {
 			setIsLoading(false);
 			return;
 		}
-		loginUser({username,password}).then(res=>{
+		loginUser({ username, password}).then(res=> {
 			setIsLoading(false);
-			console.log(res);
+			setToken(res.token);
+      navigateTo({path:'/panel', router: history});
 		})
 	}
 
