@@ -1,9 +1,6 @@
-export function navigateTo({ path, router }){
+export function navigateTo({ path }){
     if(!path){
         console.error('Path is required for this function to work', 100);
     }
-    if(!router){
-        return window.location.href = path;
-    }
-    return router.push(path);
+    return window.location.href = path;
 }

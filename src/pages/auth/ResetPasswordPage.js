@@ -48,7 +48,7 @@ export default function ResetPasswordPage() {
       setIsLoading(false);
       return;
     }
-		resetPassword().then((res)=>{
+		resetPassword({ password, confirmPassword, token}).then((res)=>{
 			if(res.statusCode === 200){
 				navigateTo({ path: "/login" });
 			}else{

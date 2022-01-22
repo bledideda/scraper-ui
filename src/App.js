@@ -6,6 +6,7 @@ import useToken from './hooks/useToken';
 import NotFound from './pages/NotFound';
 import DashboardLayout from './layout/DashboardLayout';
 import ResetPasswordPage from './pages/auth/ResetPasswordPage';
+import HomePage from './pages/panel/HomePage';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
   return (
     <DashboardLayout>
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </DashboardLayout>

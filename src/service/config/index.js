@@ -1,5 +1,4 @@
 import { SERVICE_URL } from "../../constants";
-import useToken from "../../hooks/useToken";
 
 const makeHeaders = () => {
   const token = localStorage.getItem('token');
