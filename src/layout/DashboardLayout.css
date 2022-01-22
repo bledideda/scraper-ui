@@ -1,25 +1,22 @@
-
-.panelPage{
-
+.panelPage {
 }
 .panelPage p {
-    margin: 0;
+  margin: 0;
 }
-.panelPageContainer{
-
+.panelPageContainer {
 }
-.panelPageContainer > div{
-    display: inline-block;
+.panelPageContainer > div {
+  display: inline-block;
 }
-.topNavigation{
-    width: 100%;
-    background: #3f51b5;
-    color: #fff;
-    padding: 10px 15px;
+.topNavigation {
+  width: 100%;
+  background: #3f51b5;
+  color: #fff;
+  padding: 10px 15px;
 }
-.topNavigation button{ 
-    color: #fff
+.topNavigation button {
+  color: #fff;
 }
-.contentBody{
-    padding: 15px;
+.contentBody {
+  padding: 15px;
 }

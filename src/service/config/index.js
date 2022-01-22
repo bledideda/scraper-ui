@@ -1,12 +1,12 @@
 import { SERVICE_URL } from "../../constants";
 
 const makeHeaders = () => {
-  const token = localStorage.getItem('token');
-	console.log(token);
+  const token = localStorage.getItem("token");
+  console.log(token);
   return {
-    "Accept": "application/json",
+    Accept: "application/json",
     "Content-Type": "application/json",
-    "Auth": token,
+    Auth: token,
   };
 };
 
@@ -15,10 +15,9 @@ const makeBody = (body) => {
 };
 
 export const postRequest = async (path, body) => {
-	
   const URI = SERVICE_URL + path;
 
-	let requestData = {
+  let requestData = {
     method: "POST",
     headers: makeHeaders(),
     body: makeBody(body),
@@ -37,12 +36,11 @@ export const postRequest = async (path, body) => {
 };
 
 export const getRequest = async (path) => {
-
   const URI = SERVICE_URL + path;
-	
-	let requestData = {
+
+  let requestData = {
     method: "GET",
-    headers: makeHeaders()
+    headers: makeHeaders(),
   };
 
   return await fetch(URI, requestData)

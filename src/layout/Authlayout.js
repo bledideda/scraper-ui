@@ -1,11 +1,9 @@
-import './AuthLayout.css';
+import "./AuthLayout.css";
 
-export default function AuthLayout({children}){
-    return (
-        <div className="authPage">
-            <div className="authPageContent">
-                {children}
-            </div>
-        </div>
-    )
+export default function AuthLayout({ children }) {
+  return (
+    <div className="authPage">
+      <div className="authPageContent">{children}</div>
+    </div>
+  );
 }
