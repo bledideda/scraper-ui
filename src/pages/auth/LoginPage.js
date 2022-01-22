@@ -27,10 +27,10 @@ export default function LoginPage({ setToken }) {
       if(res.statusCode === 200){
         setToken(res.data.data.accessToken);
       }else{
-        alert('Something went Wrong. Please contact the system Admin and show this code: 100');
+        alert('Something went Wrong. Please contact the system Admin and show this code: 1000');
       }
     }).catch(()=>{
-      alert('Something went Wrong. Please contact the system Admin and show this code: 101');
+      alert('Something went Wrong. Please contact the system Admin and show this code: 1001');
     })
   }
 

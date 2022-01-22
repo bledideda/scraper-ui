@@ -19,6 +19,7 @@ function App() {
           <Route path="/login" element={<LoginPage setToken={setToken} />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
         </Routes>
       </AuthLayout>
     )
