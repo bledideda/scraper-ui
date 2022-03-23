@@ -32,27 +32,26 @@ const menuItmes = [
   },
 ];
 
-export default function DashboardLayout({ children }) {
+export default function DashboardLayout({ children, clearSession }) {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-    setActiveMenu(open);
-  };
+  // const toggleDrawer = (open) => (event) => {
+  //   if (
+  //     event.type === "keydown" &&
+  //     (event.key === "Tab" || event.key === "Shift")
+  //   ) {
+  //     return;
+  //   }
+  //   setActiveMenu(open);
+  // };
+  
   const list = () => (
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
     >
       <List>
         {menuItmes.map((item) => (
@@ -77,14 +76,12 @@ export default function DashboardLayout({ children }) {
 
   const handleClose = () => {
     setAnchorEl(null);
+    clearSession();
   };
 
   return (
     <div className="panelPage">
-      <Drawer anchor={"left"} open={activeMenu} onClose={toggleDrawer(false)}>
-        {list()}
-      </Drawer>
-
+    
       <div className="panelPageContainer">
         <div
           style={{
@@ -96,16 +93,7 @@ export default function DashboardLayout({ children }) {
         >
           <AppBar position="static">
             <Toolbar>
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                sx={{ mr: 2 }}
-                onClick={toggleDrawer(true)}
-              >
-                <MenuIcon />
-              </IconButton>
+              
 
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 {
@@ -140,17 +128,12 @@ export default function DashboardLayout({ children }) {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
                   <MenuItem onClick={handleClose}>Log Out</MenuItem>
                 </Menu>
               </div>
             </Toolbar>
           </AppBar>
-          {/* <div className="topNavigation">
-            <Button onClick={toggleDrawer(true)}>
-              <MenuIcon />
-            </Button>
-          </div> */}
           <div className="contentBody">{children}</div>
         </div>
       </div>

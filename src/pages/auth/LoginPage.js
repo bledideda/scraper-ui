@@ -34,7 +34,7 @@ export default function LoginPage({ setToken }) {
   return (
     <div style={{ display: "block" }}>
       <div style={{ textAlign: "center", marginBottom: "5em" }}>
-        <Typography variant="h5">Welcome to Ultimate Panel.</Typography>
+        <Typography variant="h5">Welcome</Typography>
         <Typography variant="body1">Enter credentials to login.</Typography>
       </div>
 

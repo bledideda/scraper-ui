@@ -7,11 +7,10 @@ import NotFound from './pages/NotFound';
 import DashboardLayout from './layout/DashboardLayout';
 import ResetPasswordPage from './pages/auth/ResetPasswordPage';
 import HomePage from './pages/panel/HomePage';
-import PreferencesPage from './pages/panel/PreferencesPage';
 
 function App() {
 
-  const { token, setToken } = useToken();
+  const { token, setToken, clearSession } = useToken();
 
   if (!token) {
     return (
@@ -28,10 +27,9 @@ function App() {
   }
 
   return (
-    <DashboardLayout>
+    <DashboardLayout clearSession={clearSession}>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/preferences" element={<PreferencesPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </DashboardLayout>

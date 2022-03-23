@@ -12,9 +12,16 @@ export default function useToken() {
     setToken(userToken);
   };
 
+  const clearSession = () => {
+    localStorage.removeItem('token');
+    // console.log('enters here');
+    setToken(null);
+  };
+
 	return {
     setToken: saveToken,
-    token
+    token,
+    clearSession
   }
 
 }

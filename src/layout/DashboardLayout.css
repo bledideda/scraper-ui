@@ -20,3 +20,9 @@
 .contentBody {
   padding: 15px;
 }
+.loaderScrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loaderScrapper p{ margin-left: 15px }
