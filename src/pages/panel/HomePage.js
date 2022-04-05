@@ -23,6 +23,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import ReplayIcon from '@mui/icons-material/Replay';
 
+
 const getColorByStatus = (status) => {
   if (status === "PENDING") return "primary";
   if (status === "FAILED") return "error";
@@ -34,29 +35,29 @@ export default function HomePage() {
   const [isScrapping, setIsScrapping] = useState(false);
   const [jobName, setJobName] = useState("");
   const [jobs, setJobs] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState([]);
   const [categories, setCategories] = useState(null);
 
-  const renderActionButtons = ({id}) => {
+  const renderActionButtons = ({ id }) => {
     return (
       <>
-          <IconButton color="primary" component="span"  onClick={() => downloadCSV(id)}>
-            <ArrowDownwardIcon />
+        <IconButton color="primary" component="span" onClick={() => downloadCSV(id)}>
+          <ArrowDownwardIcon />
+        </IconButton>
+        {isScrapping ?
+          <IconButton color="default" component="span" onClick={() => alert('Job in progress...')}>
+            <ReplayIcon />
           </IconButton>
-          {isScrapping ? 
-            <IconButton color="default" component="span"  onClick={() => alert('Job in progress...')}>
-              <ReplayIcon />
-            </IconButton>
           :
-            <IconButton color="warning" component="span"  onClick={() => retryFailedJobs(id)}>
-              <ReplayIcon />
-            </IconButton>
-          }
-          <IconButton color="error" component="span"  onClick={() => handleDelete(id)}>
-            <HighlightOffIcon />
+          <IconButton color="warning" component="span" onClick={() => retryFailedJobs(id)}>
+            <ReplayIcon />
           </IconButton>
-          
-        </>
+        }
+        <IconButton color="error" component="span" onClick={() => handleDelete(id)}>
+          <HighlightOffIcon />
+        </IconButton>
+
+      </>
     )
   }
 
@@ -162,7 +163,7 @@ export default function HomePage() {
   };
 
   const handleDelete = (jobId) => {
-    deleteJob({jobId});
+    deleteJob({ jobId });
   };
 
   useEffect(() => {
@@ -221,8 +222,8 @@ export default function HomePage() {
   }, []);
 
   const retryFailedJobs = (id) => {
-    
-    retryScrap({jobId: id  }).then(res=>{
+
+    retryScrap({ jobId: id }).then(res => {
       setIsScrapping(true);
     })
 
@@ -254,6 +255,7 @@ export default function HomePage() {
                     value={selectedCategory}
                     label="Category ( optional )"
                     onChange={handleSelectChange}
+                    multiple
                   >
                     <MenuItem value="">All</MenuItem>
                     {categories &&
@@ -318,30 +320,30 @@ export default function HomePage() {
                 </Typography>
                 <Divider />
                 <br />
-                <Button variant="contained" onClick={()=>downloadCSV(jobs[0].id)}>
+                <Button variant="contained" onClick={() => downloadCSV(jobs[0].id)}>
                   Export CSV{" "}
                 </Button>
               </CardContent>
             </Card>
           </Grid>
         </Grid>
-        
+
         {jobs.length &&
-        <Grid  item xs={12} md={12}>
-          <br></br>
-          <Card>
-            <CardContent>
-              <Typography variant="body1" color="initial">
-                Jobs Done
-              </Typography>
-              <Divider />
-              <br />
-              <div style={{ height: 400, width: "100%", display: "block" }}>
-                <DataGrid rows={jobs} columns={columns} />
-              </div>
-            </CardContent>
-          </Card>
-        </Grid>
+          <Grid item xs={12} md={12}>
+            <br></br>
+            <Card>
+              <CardContent>
+                <Typography variant="body1" color="initial">
+                  Jobs Done
+                </Typography>
+                <Divider />
+                <br />
+                <div style={{ height: 400, width: "100%", display: "block" }}>
+                  <DataGrid rows={jobs} columns={columns} />
+                </div>
+              </CardContent>
+            </Card>
+          </Grid>
         }
 
       </Grid>
